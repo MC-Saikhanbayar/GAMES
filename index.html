@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMES</title>
+</head>
+
+<style>
+    .kino{
+        width: 330px;
+        height: 500px;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(20, 129, 149);
+        border: 3px dashed rgb(1, 22, 137);
+        float: left;
+        text-align: center;
+    }
+    .img{
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+    }
+</style>
+
+<body style="background-color: blueviolet;">
+    <h1 style="text-align: center; ">GAMES</h1>
+    <div id="games"></div>
+
+<script>
+    let url ="https://jsonfakery.com/games/paginated";
+
+    fetch(url)
+    .then((res)=>{
+        return res.json();
+    })
+    .then((ugugdul)=>{
+
+        let games = ugugdul.data;
+        let divMovies = document.getElementById("games");
+
+        for (let i = 0; i < 8; i++){
+
+            let jishee = document.createElement("div");
+            jishee.className = "kino";
+
+            jishee.innerHTML = `
+                <h2>${games[i].name}</h2>
+                <img src="${games[i].background_image}" 
+                     class="img" 
+                     alt="${games[i].background_image}">
+            `;
+
+            divMovies.appendChild(jishee);
+        }
+
+    });
+</script>
+</body>
+</html>
